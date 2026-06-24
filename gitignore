@@ -1,0 +1,41 @@
+# ============================================================
+#  SIDORAH - .gitignore
+#  Taruh file ini di root folder project SIDORAH
+# ============================================================
+
+# ── File konfigurasi sensitif ────────────────────────────────
+config_email.php
+.env
+.env.local
+
+# ── File debug / sementara (HAPUS dari server!) ──────────────
+cek_session.php
+reset_superadmin.php
+test_login_pendonor.php
+
+# ── File lama / duplikat ─────────────────────────────────────
+sidenav_lama.php
+
+# ── Folder PHPMailer (install via Composer, jangan di-push) ──
+phpmailer/
+vendor/
+
+# ── Upload file dari user ────────────────────────────────────
+uploads/
+assets/uploads/
+
+# ── Cache dan log ────────────────────────────────────────────
+*.log
+cache/
+logs/
+
+# ── OS files ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
