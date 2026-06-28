@@ -7,7 +7,7 @@
 // Hitung notifikasi belum dibaca
 $notif_count = 0;
 if (sudahLogin()) {
-    $res = $koneksi->query("SELECT COUNT(*) as n FROM notifikasi WHERE id_penerima={$_SESSION['id_pengguna']} AND status_baca=0");
+    $res = $koneksi->query("SELECT COUNT(*) as n FROM notifikasi WHERE id_penerima=" . intval($_SESSION['id_pengguna']) . " AND status_baca=0");
     if ($res) $notif_count = $res->fetch_assoc()['n'];
 }
 
@@ -76,7 +76,7 @@ if ($res_nama && $res_nama->num_rows > 0) {
                 <?php
                 $notifs = $koneksi->query("
                     SELECT * FROM notifikasi
-                    WHERE id_penerima={$_SESSION['id_pengguna']}
+                    WHERE id_penerima=" . intval($_SESSION['id_pengguna']) . "
                     ORDER BY waktu_kirim DESC LIMIT 5
                 ");
                 if ($notifs && $notifs->num_rows > 0):
