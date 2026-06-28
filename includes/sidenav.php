@@ -97,31 +97,10 @@ $halaman_aktif = basename($_SERVER['PHP_SELF']);
                     Permintaan Darah
                 </a>
 
-                <!-- Sistem Pakar -->
-                <?php if (cekRole([ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_PETUGAS_MEDIS])): ?>
-                <a class="nav-link <?= $halaman_aktif==='sistem_pakar.php'?'active':'' ?>"
-                   href="sistem_pakar.php">
-                    <div class="sb-nav-link-icon"><i class="bi bi-braces-asterisk"></i></div>
-                    Sistem Pakar
-                </a>
-                <?php endif; ?>
+
                 <?php endif; ?>
 
-                <!-- ── IOT ── -->
-                <?php if (cekRole([ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_PETUGAS_MEDIS])): ?>
-                <div class="sb-sidenav-menu-heading">IoT & Monitoring</div>
-                <a class="nav-link <?= $halaman_aktif==='monitoring_iot.php'?'active':'' ?>"
-                   href="monitoring_iot.php">
-                    <div class="sb-nav-link-icon"><i class="bi bi-cpu-fill"></i></div>
-                    Monitoring Suhu Darah
-                    <?php
-                    $res_kritis = $koneksi->query("SELECT COUNT(*) as n FROM sensor_suhu WHERE status='kritis' AND created_at >= DATE_SUB(NOW(), INTERVAL 1 HOUR)");
-                    $suhu_kritis = $res_kritis ? $res_kritis->fetch_assoc()['n'] : 0;
-                    if ($suhu_kritis > 0): ?>
-                    <span class="badge bg-danger ms-auto">⚠</span>
-                    <?php endif; ?>
-                </a>
-                <?php endif; ?>
+
 
                 <!-- ── LAPORAN ── -->
                 <?php if (cekRole([ROLE_SUPER_ADMIN, ROLE_MANAJEMEN, ROLE_ADMIN])): ?>
